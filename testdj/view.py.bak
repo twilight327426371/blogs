@@ -1,0 +1,9 @@
+from django.http import HttpResponse
+ 
+def hello(request):
+    return HttpResponse("Hello world ! ")
+
+def ls(request):
+    import os
+    info=os.popen('ls').read()
+    return HttpResponse(info)
