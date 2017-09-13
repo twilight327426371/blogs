@@ -16,7 +16,6 @@
        
     <h2>{{blog.title}}</h2>
     <p>作者：{{blog.author}}&nbsp;&nbsp;{{blog.post_date | date:'Y-m-d H:i:s'}}<p>
-    {% load djangomarkdown %}
-    <p>{{blog.content|djangomarkdown|safe}}</p>
+    <p>{{blog.content}}</p>
     </body>
 </html>
