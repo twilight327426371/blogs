@@ -5,6 +5,24 @@ from blogs.models import Blog
 from testdj import forms
 from django.template import RequestContext
 
+
+def login(request):
+    if request.method == 'POST':
+        uf = forms.UserForm(request.POST)
+        if uf.is_valid():
+            #获取表单用户密码
+            username = uf.cleaned_data['username']
+            password = uf.cleaned_data['password']
+            #获取的表单数据与数据库进行比较
+            user = User.objects.filter(username__exact = username,password__exact = password)
+            if user:
+                return render_to_response('success.html',{'username':username})
+            else:
+                return HttpResponseRedirect('/login/')
+    else:
+        uf = forms.UserForm()
+    return render_to_response('login.html',{'uf':uf})
+
 def blog_list(request):
     blog_list = Blog.objects.all()
     return render_to_response('blog_list.html',{'blog_list':blog_list})

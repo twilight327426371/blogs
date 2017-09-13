@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogs',
     'markdown2',
+    'login',
+
 ]
 
 MIDDLEWARE = [

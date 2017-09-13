@@ -2,6 +2,7 @@
 from django.conf.urls import url
 from django.contrib import admin
 from testdj import views
+admin.autodiscover()
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -22,4 +23,5 @@ urlpatterns = [
     url(r'^blog/delete$', views.blog_del),
     url(r'^blog/view$', views.blog_view),
     url(r'^blog/edit$', views.blog_edit),
+    url(r'^login/$', views.login),
 ]
