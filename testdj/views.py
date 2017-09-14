@@ -2,6 +2,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from blogs.models import Blog
+from login.models import User
 from testdj import forms
 from django.template import RequestContext
 
@@ -16,11 +17,13 @@ def login(request):
             #获取的表单数据与数据库进行比较
             user = User.objects.filter(username__exact = username,password__exact = password)
             if user:
-                return render_to_response('success.html',{'username':username})
+                #return render_to_response('success.html',{'username':username})
+                return render_to_response('blog_list.html',{'username':username})
             else:
                 return HttpResponseRedirect('/login/')
     else:
         uf = forms.UserForm()
+        print uf
     return render_to_response('login.html',{'uf':uf})
 
 def blog_list(request):
