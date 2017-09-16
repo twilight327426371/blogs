@@ -18,7 +18,8 @@ def login(request):
             user = User.objects.filter(username__exact = username,password__exact = password)
             if user:
                 #return render_to_response('success.html',{'username':username})
-                return render_to_response('blog_list.html',{'username':username})
+                blog_list = Blog.objects.all()
+                return render_to_response('blog_list.html',{'username':username,'blog_list':blog_list})
             else:
                 return HttpResponseRedirect('/login/')
     else:
